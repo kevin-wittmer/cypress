@@ -1135,7 +1135,6 @@ jobs:
     <<: *defaults
     shell: /bin/bash --login
     steps:
-      - - check-halt-binary
       - run:
           name: Check environment variables before code sign (if on Mac)
           # NOTE
@@ -1165,6 +1164,7 @@ jobs:
 
       - attach_workspace:
           at: ~/
+      - check-halt-binary
       - run: $(yarn bin)/print-arch
       - install-required-node
       - run:
